@@ -170,7 +170,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.delegate dataSource:self tableView:tableView titleForHeaderInSection:section];
+    if ([self.delegate respondsToSelector:@selector(dataSource:tableView:titleForHeaderInSection:)]) {
+        return [self.delegate dataSource:self tableView:tableView titleForHeaderInSection:section];
+    } else {
+        return nil;
+    }
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
