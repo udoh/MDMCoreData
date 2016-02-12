@@ -61,9 +61,10 @@
 /**
  Asks the delegate to supply a title string for the section passed as argument.
  
+ @param tableView The table view for which to supply the title string.
  @param section The section for which to supply the title string.
  */
-- (NSString *)dataSource:(MDMFetchedResultsTableDataSource *)dataSource titleForHeaderInSection:(NSInteger)section;
+- (NSString *)dataSource:(MDMFetchedResultsTableDataSource *)dataSource tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
 
 @end
 
