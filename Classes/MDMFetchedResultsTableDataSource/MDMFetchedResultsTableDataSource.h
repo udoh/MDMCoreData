@@ -58,6 +58,13 @@
  */
 - (NSString *)dataSource:(MDMFetchedResultsTableDataSource *)dataSource reuseIdentifierForObject:(id)object atIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ Asks the delegate to supply a title string for the section passed as argument.
+ 
+ @param section The section for which to supply the title string.
+ */
+- (NSString *)dataSource:(MDMFetchedResultsTableDataSource *)dataSource titleForHeaderInSection:(NSInteger)section;
+
 @end
 
 /**

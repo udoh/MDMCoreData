@@ -169,6 +169,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.delegate dataSource:self titleForHeaderInSection:section];
+}
+
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
