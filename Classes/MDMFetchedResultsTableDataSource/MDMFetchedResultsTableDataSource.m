@@ -195,7 +195,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.deletedRowIndexPaths count] +
     [self.insertedRowIndexPaths count] +
     [self.updatedRowIndexPaths count];
-    if (totalChanges > 50) {
+    if (totalChanges == 0 || totalChanges > 50) {
         [self.tableView reloadData];
         return;
     }
