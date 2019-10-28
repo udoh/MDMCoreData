@@ -185,38 +185,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
-// reference: https://gist.github.com/MrRooni/4988922
-// http://www.fruitstandsoftware.com/blog/2013/02/19/uitableview-and-nsfetchedresultscontroller-updates-done-right/
-
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    
-    NSInteger totalChanges = [self.deletedSectionIndexes count] +
-    [self.insertedSectionIndexes count] +
-    [self.deletedRowIndexPaths count] +
-    [self.insertedRowIndexPaths count] +
-    [self.updatedRowIndexPaths count];
-    if (totalChanges == 0 || totalChanges > 50) {
-        [self.tableView reloadData];
-        return;
-    }
-    
-    [self.tableView beginUpdates];
-    
-    [self.tableView deleteSections:self.deletedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView insertSections:self.insertedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    [self.tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:UITableViewRowAnimationLeft];
-    [self.tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:UITableViewRowAnimationRight];
-    [self.tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    [self.tableView endUpdates];
-    
-    // nil out the collections so their ready for their next use.
-    self.insertedSectionIndexes = nil;
-    self.deletedSectionIndexes = nil;
-    self.deletedRowIndexPaths = nil;
-    self.insertedRowIndexPaths = nil;
-    self.updatedRowIndexPaths = nil;
+    [self.tableView reloadData];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex
